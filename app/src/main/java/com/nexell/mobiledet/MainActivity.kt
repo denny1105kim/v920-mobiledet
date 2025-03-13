@@ -12,13 +12,16 @@ import android.provider.MediaStore
 import android.media.MediaScannerConnection
 import java.io.InputStream
 import android.util.Log
+import com.nexell.mobiledet.databinding.ActivityMainBinding
 
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         copyAssetsToGallery(applicationContext)
 
     }

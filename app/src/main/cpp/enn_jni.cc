@@ -1,5 +1,3 @@
-// Copyright (c) 2023 Samsung Electronics Co. LTD. Released under the MIT License.
-
 #include <jni.h>
 #include <iostream>
 #include <android/log.h>
@@ -15,7 +13,7 @@ jobject EnnBufferPtrAndNumberOfBuffersInfoToBufferSetInfo(
         EnnBufferPtr *buffer_set,
         NumberOfBuffersInfo buffers_info
 ) {
-    jclass bufferSetInfo = env->FindClass("com/samsung/imageclassification/enn_type/BufferSetInfo");
+    jclass bufferSetInfo = env->FindClass("com/nexell/mobiledet/enn_type/BufferSetInfo");
     jmethodID constructor = env->GetMethodID(bufferSetInfo, "<init>", "()V");
 
     jobject jobj = env->NewObject(bufferSetInfo, constructor);
@@ -32,7 +30,7 @@ jobject EnnBufferPtrAndNumberOfBuffersInfoToBufferSetInfo(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennInitialize(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennInitialize(
         JNIEnv *env,
         jobject thiz
 ) {
@@ -43,7 +41,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennInitialize(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennDeinitialize(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennDeinitialize(
         JNIEnv *env,
         jobject thiz
 ) {
@@ -54,7 +52,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennDeinitialize(
 
 extern "C"
 JNIEXPORT jlong JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennOpenModel(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennOpenModel(
         JNIEnv *env,
         jobject thiz,
         jstring j_filename
@@ -71,7 +69,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennOpenModel(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennCloseModel(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennCloseModel(
         JNIEnv *env,
         jobject thiz,
         jlong model_id
@@ -83,7 +81,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennCloseModel(
 
 extern "C"
 JNIEXPORT jobject JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennAllocateAllBuffers(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennAllocateAllBuffers(
         JNIEnv *env,
         jobject thiz,
         jlong model_id
@@ -100,7 +98,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennAllocateAllBuffer
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennReleaseBuffers(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennReleaseBuffers(
         JNIEnv *env,
         jobject thiz,
         jlong j_buffers_set,
@@ -115,7 +113,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennReleaseBuffers(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennExecute(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennExecute(
         JNIEnv *env,
         jobject thiz,
         jlong model_id
@@ -127,7 +125,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennExecute(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennMemcpyHostToDevice(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennMemcpyHostToDevice(
         JNIEnv *env,
         jobject thiz,
         jlong j_buffer_set,
@@ -147,7 +145,7 @@ Java_com_samsung_imageclassification_executor_ModelExecutor_ennMemcpyHostToDevic
 
 extern "C"
 JNIEXPORT jbyteArray JNICALL
-Java_com_samsung_imageclassification_executor_ModelExecutor_ennMemcpyDeviceToHost(
+Java_com_nexell_mobiledet_executor_ModelExecutor_ennMemcpyDeviceToHost(
         JNIEnv *env,
         jobject thiz,
         jlong j_buffer_set,
